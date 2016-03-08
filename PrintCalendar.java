@@ -1,26 +1,33 @@
+// import java api
 import java.util.*;
-import java.util.Scanner;
 
 public class PrintCalendar {
   /** Main method */
   public static void main(String[] args) {
 	  
-	Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
+
+    // new an object for Calendar
     Calendar calendar = new GregorianCalendar();
-	
-	 int month = calendar.get(Calendar.MONTH);
-	 int year = calendar.get(Calendar.YEAR);	
-	if ( args.length ==1 ){
-	  month = Integer.valueOf(args[0]);
-	}
+
+    // initialize month and year with current datas
+    int month = ( calendar.get(Calendar.MONTH) ) +1;
+    int year = calendar.get(Calendar.YEAR);	
+
+    // Invalid input warning
+    if ( args.length > 2 ){
+      System.out.println("Invalid input."); 
+      System.exit(1);     
+    }
+    // if only enter month
+    else if ( args.length == 1 ){
+      month = Integer.valueOf(args[0]);
+    }
     else if ( args.length == 2 ){
-	  month = Integer.valueOf(args[0]);
-	  year = Integer.valueOf(args[1]);	
-	}
-	else{
-		System.out.println("Invalid input.");
-	}
-    
+      month = Integer.valueOf(args[0]);
+      year = Integer.valueOf(args[1]);	
+    }
+
     // Print calendar for the month of the year
     printMonth(year, month);
   }
