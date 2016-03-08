@@ -1,18 +1,26 @@
+import java.util.*;
 import java.util.Scanner;
 
 public class PrintCalendar {
   /** Main method */
   public static void main(String[] args) {
-    Scanner input = new Scanner(System.in);
-
-    // Prompt the user to enter year
-    System.out.print("Enter full year (e.g., 2001): ");
-    int year = input.nextInt();
-
-    // Prompt the user to enter month
-    System.out.print("Enter month in number between 1 and 12: ");
-    int month = input.nextInt();
-
+	  
+	Scanner input = new Scanner(System.in);
+    Calendar calendar = new GregorianCalendar();
+	
+	 int month = calendar.get(Calendar.MONTH);
+	 int year = calendar.get(Calendar.YEAR);	
+	if ( args.length ==1 ){
+	  month = Integer.valueOf(args[0]);
+	}
+    else if ( args.length == 2 ){
+	  month = Integer.valueOf(args[0]);
+	  year = Integer.valueOf(args[1]);	
+	}
+	else{
+		System.out.println("Invalid input.");
+	}
+    
     // Print calendar for the month of the year
     printMonth(year, month);
   }
